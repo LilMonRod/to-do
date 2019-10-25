@@ -1,0 +1,28 @@
+.Side {
+    background-color: #282c34;
+    height: 92vh;
+    width: 20vw;
+}
+
+.list__container {
+    margin: 0;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
+.list__item {
+    list-style: none;
+    color: white;
+    padding: 20px  10px 20px 10px;
+}
+
+.list__item--selected {
+    list-style: none;
+    background-color: #20232b;
+    color: white;
+    padding: 20px  10px 20px 10px;
+}
+
+.list__item:hover {
+    background-color: #363b47;
+}
