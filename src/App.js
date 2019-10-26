@@ -7,25 +7,32 @@ class App extends React.Component {
     super(props);
     this.state = {
       value: '',
-      tap:''
+      tap:'Create'
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.tap = 'Create';
+    this.handleTap = this.handleTap.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  tag() {
+    if (this.state.tap === 'All') {
+      return <h1>All</h1>
+    } else if (this.state.tap === 'Pending') {
+      return <h1>Pending</h1>
+    } else if (this.state.tap === 'Complete') {
+      return <h1>Complete</h1>
+    } else if (this.state.tap === 'Create') {
+      return <h1>Create</h1>
+    }
   }
 
   handleTap(selectedTap) {
-    alert('Handle Tap');
-    this.setState({tap: selectedTap});
+    console.log('Handle Tap: '+ selectedTap);
+    this.setState({tap: selectedTap}, () => this.handleSubmit());
   }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
+  handleSubmit() {
+    this.tap = this.state.tap;
   }
 
   render() {
@@ -35,6 +42,7 @@ class App extends React.Component {
           <h1 className="App-title">To Do list</h1>
         </header>
         <Side handleTap={this.handleTap}/>
+        {this.tag()}
       </div>
     );
   }

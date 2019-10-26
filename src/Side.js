@@ -6,7 +6,7 @@ export default class Side extends React.Component {
     super(props);
     this.handleTap = props.handleTap; 
     this.state = {
-      create:'list__item',
+      create:'list__item--selected',
       all:'list__item',
       pending:'list__item',
       complete:'list__item'
@@ -16,32 +16,51 @@ export default class Side extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick(event) {
-    this.setState({name:event.target.id}, (event) => this.switchItem(event) );
-    this.handleTap();
+    this.setState({name:event.target.id}, () => this.switchItem() );
+    this.handleTap(event.target.id);
   }
 
-  switchItem(event) {
-    console.log(event);
+  switchItem() {
+    let varCreate;
+    let varAll;
+    let varPending;
+    let varComplete;
     switch(this.state.name) {
       case 'Create':
         console.log('Create');
-        this.setState({create: 'list__item--selected', all:'list__item', pending:'list__item', complete:'list__item'});
+        varCreate = 'list__item--selected';
+        varAll = 'list__item';
+        varPending = 'list__item';
+        varComplete = 'list__item';
         break;
       case 'All':
         console.log('All');
-        this.setState({create: 'list__item', all:'list__item--selected', pending:'list__item', complete:'list__item'});
+        varCreate = 'list__item';
+        varAll = 'list__item--selected';
+        varPending = 'list__item';
+        varComplete = 'list__item';
         break;
       case 'Pending':
         console.log('Pending');
-        this.setState({create: 'list__item', all:'list__item', pending:'list__item--selected', complete:'list__item'});
+        varCreate = 'list__item';
+        varAll = 'list__item';
+        varPending = 'list__item--selected';
+        varComplete = 'list__item';
         break;
       case 'Complete':
         console.log('Complete');
-        this.setState({create: 'list__item', all:'list__item', pending:'list__item', complete:'list__item--selected'});
+        varCreate = 'list__item';
+        varAll = 'list__item';
+        varPending = 'list__item';
+        varComplete = 'list__item--selected';
         break;
       default:
-        this.setState({create: 'list__item', all:'list__item', pending:'list__item', complete:'list__item'});;
+        varCreate = 'list__item';
+        varAll = 'list__item';
+        varPending = 'list__item';
+        varComplete = 'list__item';
     }
+    this.setState({create: varCreate, all: varAll, pending: varPending, complete: varComplete});;
   } 
   toggleSidenav(e) {
     // var css = (this.props.toggle+e.name === "hidden") ? "show" : "hidden";

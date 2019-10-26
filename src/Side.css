@@ -17,6 +17,13 @@
 }
 
 .list__item--selected {
+    background-color: #323642;
+    list-style: none;
+    color: rgb(209, 206, 206);
+    padding: 20px  10px 20px 10px;
+}
+
+.list__item--selected {
     list-style: none;
     background-color: #20232b;
     color: white;
