@@ -44,6 +44,7 @@ class App extends React.Component {
   }
 
   saveTasksInCache(data) {
+    data = JSON.stringify(data);
     localStorage.setItem('tasks', data);
   }
 
