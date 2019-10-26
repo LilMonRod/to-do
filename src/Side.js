@@ -15,6 +15,7 @@ export default class Side extends React.Component {
 
     this.handleClick = this.handleClick.bind(this);
   }
+  
   handleClick(event) {
     this.setState({name:event.target.id}, () => this.switchItem() );
     this.handleTap(event.target.id);

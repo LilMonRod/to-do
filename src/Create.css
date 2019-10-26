@@ -1,0 +1,34 @@
+.create {
+    width: 75vw;
+}
+
+.create__title {
+    color: #2a3241;
+    text-align: initial;
+    margin-left: 20%;
+}
+
+.tagLabel {
+    display: block;
+    margin: 30px 20% 0;
+    text-align: initial;
+}
+
+.tagInput {
+    display: block;
+    margin: 5px 6% 0;
+}
+
+.btn__create {
+    background-color: #2a3241;
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 50px;
+    font-weight: bolder;
+    margin-top: 40px;
+}
+
+.btn__create:hover {
+    background-color: #282c34;
+}

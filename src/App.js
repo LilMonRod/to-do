@@ -1,28 +1,31 @@
 import React from 'react';
 import './App.css';
 import Side from './Side';
+import Create from './Create';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: '',
-      tap:'Create'
-    };
+      tap:'Create',
+      tasks: []
+  }
 
-    this.tap = 'Create';
-    this.handleTap = this.handleTap.bind(this);
+  this.tap = 'Create';
+  this.handleTap = this.handleTap.bind(this);
+  this.saveNewTask = this.saveNewTask.bind(this);
   }
 
   tag() {
     if (this.state.tap === 'All') {
-      return <h1>All</h1>
+      return <h1>All</h1>;
     } else if (this.state.tap === 'Pending') {
-      return <h1>Pending</h1>
+      return <h1>Pending</h1>;
     } else if (this.state.tap === 'Complete') {
-      return <h1>Complete</h1>
+      return <h1>Complete</h1>;
     } else if (this.state.tap === 'Create') {
-      return <h1>Create</h1>
+      return <Create saveNewTask={this.saveNewTask}/>;
     }
   }
 
@@ -33,6 +36,15 @@ class App extends React.Component {
 
   handleSubmit() {
     this.tap = this.state.tap;
+  }
+
+  saveNewTask(newTask) {
+    console.log(newTask);
+    this.setState({tasks: [...this.state.tasks, newTask]}, () => this.saveTasksInCache(this.state.tasks));
+  }
+
+  saveTasksInCache(data) {
+    localStorage.setItem('tasks', data);
   }
 
   render() {
