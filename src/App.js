@@ -6,15 +6,17 @@ import Create from './Create';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.tasks = localStorage.getItem('myData');
     this.state = {
       value: '',
       tap:'Create',
-      tasks: []
-  }
+      tasks: this.tasks ? JSON.parse(this.tasks) : []
+    }
 
-  this.tap = 'Create';
-  this.handleTap = this.handleTap.bind(this);
-  this.saveNewTask = this.saveNewTask.bind(this);
+    this.tap = 'Create';
+    this.handleTap = this.handleTap.bind(this);
+    this.saveNewTask = this.saveNewTask.bind(this);
+    this.saveTasksInCache = this.saveTasksInCache.bind(this);
   }
 
   tag() {
@@ -44,18 +46,26 @@ class App extends React.Component {
   }
 
   saveTasksInCache(data) {
+    console.log(this.state.tasks);
     data = JSON.stringify(data);
     localStorage.setItem('tasks', data);
+
+    this.handleTap('All');
+    this.showTasks();
   }
 
+  showTasks() {
+    alert('se van a mostrar todas las tasks'); 
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">To Do list</h1>
         </header>
-        <Side handleTap={this.handleTap}/>
-        {this.tag()}
+        <Side selectedTap={this.state.tap} handleTap={this.handleTap}/>
+        {this.tasks ? this.showTasks() : this.tag()}
+        {}
       </div>
     );
   }

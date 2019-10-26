@@ -4,29 +4,34 @@ import './Side.css';
 export default class Side extends React.Component {
   constructor(props) {
     super(props);
-    this.handleTap = props.handleTap; 
-    this.state = {
-      create:'list__item--selected',
-      all:'list__item',
-      pending:'list__item',
-      complete:'list__item'
-    };
+    this.handleTap = props.handleTap;
+    this.selectedTap = props.selectedTap; 
     this.name='';
 
+    
     this.handleClick = this.handleClick.bind(this);
   }
   
+  UNSAFE_componentWillReceiveProps(){
+    this.setState({
+      create: (this.selectedTap === 'Create' ) ? 'list__item--selected' : 'list__item',
+      all: (this.selectedTap === 'All') ? 'list__item--selected' : 'list__item',
+      pending: (this.selectedTap === 'Pending') ? 'list__item--selected' : 'list__item',
+      complete: (this.selectedTap === 'Complete') ? 'list__item--selected' : 'list__item'
+    }, () => this.switchItem() );
+  }
   handleClick(event) {
     this.setState({name:event.target.id}, () => this.switchItem() );
     this.handleTap(event.target.id);
   }
 
-  switchItem() {
+  switchItem(event) {
+    const name = event ? event : this.state.name;
     let varCreate;
     let varAll;
     let varPending;
     let varComplete;
-    switch(this.state.name) {
+    switch(name) {
       case 'Create':
         console.log('Create');
         varCreate = 'list__item--selected';
