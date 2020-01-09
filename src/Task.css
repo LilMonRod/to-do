@@ -1,0 +1,15 @@
+.cont {
+    max-width: 300px;
+    margin: 5px;
+    width: 45%;
+    background-color: #282c34;
+    border-radius: 11px;
+}
+
+.title-cont {
+    color: white;
+}
+
+.title-cont > h3 {
+    margin: 6px;
+}

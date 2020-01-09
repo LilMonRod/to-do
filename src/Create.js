@@ -23,7 +23,7 @@ export default class Create extends React.Component {
       deadline: '',
       hour: '',
       description: '',
-      complete: false
+      status: 'pending'
     }
 
     newTask.taskName =event.target.name.value;

@@ -19,3 +19,15 @@
 .App-title {
   margin: 0;
 }
+
+.main {
+  width: 80vw;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: baseline;
+  justify-content: space-evenly;
+}
+
+h1 {
+  width: 100%;
+}
