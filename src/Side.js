@@ -7,14 +7,20 @@ export default class Side extends React.Component {
     this.handleTap = props.handleTap;
     this.selectedTap = props.selectedTap; 
     this.name='';
-
+    
+    this.state = {
+      create: (this.selectedTap === 'Create') ? 'list__item--selected' : 'list__item',
+      all: (this.selectedTap === 'All') ? 'list__item--selected' : 'list__item',
+      pending: (this.selectedTap === 'Pending') ? 'list__item--selected' : 'list__item',
+      complete: (this.selectedTap === 'Complete') ? 'list__item--selected' : 'list__item'
+    }
     
     this.handleClick = this.handleClick.bind(this);
   }
   
   UNSAFE_componentWillReceiveProps(){
     this.setState({
-      create: (this.selectedTap === 'Create' ) ? 'list__item--selected' : 'list__item',
+      create: (this.selectedTap === 'Create') ? 'list__item--selected' : 'list__item',
       all: (this.selectedTap === 'All') ? 'list__item--selected' : 'list__item',
       pending: (this.selectedTap === 'Pending') ? 'list__item--selected' : 'list__item',
       complete: (this.selectedTap === 'Complete') ? 'list__item--selected' : 'list__item'
@@ -77,7 +83,7 @@ export default class Side extends React.Component {
       <div className="Side">
         <ul className="list__container">
           <li onClick={this.handleClick} id="Create" className={this.state.create}>
-            Crate new task
+            New task
           </li>
           <li onClick={this.handleClick} id="All" className={this.state.all}>
             All tasks
