@@ -61,7 +61,7 @@ class App extends React.Component {
   }
 
   showTasks() {
-    alert('se van a mostrar todas las tasks'); 
+    console.log("verificar que se muestren todas las tasks y que se actualicen las pestañas")
   }
   render() {
     return (
