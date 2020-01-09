@@ -55,16 +55,23 @@ class App extends React.Component {
   saveTasksInCache(data) {
     data = JSON.stringify(this.state.tasks);
     localStorage.setItem('tasks', data);
+
+    this.handleTap('All');
+    this.showTasks();
   }
 
+  showTasks() {
+    alert('se van a mostrar todas las tasks'); 
+  }
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">To Do list</h1>
         </header>
-        <Side handleTap={this.handleTap}/>
-        {this.tag()}
+        <Side selectedTap={this.state.tap} handleTap={this.handleTap}/>
+        {this.tasks ? this.showTasks() : this.tag()}
+        {}
       </div>
     );
   }

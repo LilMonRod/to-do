@@ -18,6 +18,7 @@ export default class Create extends React.Component {
   }
 
   manageData(event) {
+    event.preventDefault();
     const newTask = {
       taskName: '',
       deadline: '',
